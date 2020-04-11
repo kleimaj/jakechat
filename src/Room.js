@@ -3,7 +3,7 @@ import Video from 'twilio-video';
 import Participant from './Participant';
 
 const Room = ({ roomName, token, handleLogout }) => {
-    const [room, setRoom] = useState(null);
+    const [room, setRoom] = useState();
     const [participants, setParticipants] = useState([]);
 
     const remoteParticipants = participants.map(participant => (

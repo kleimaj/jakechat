@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import { Redirect } from 'react-router-dom';
 import Lobby from './Lobby';
 import Room from './Room';
 
@@ -49,7 +50,12 @@ const VideoChat = () => {
    let render;
   if (token) {
     render = (
-        <Room roomName={roomName} token={token} handleLogout={handleLogout} />
+        // <Room roomName={roomName} token={token} handleLogout={handleLogout} />
+        <Redirect to={{
+          pathname: '/'+roomName,
+          state: { roomName: roomName,
+                   token: token }
+        }}/>
     );
   } else {
     render = (
