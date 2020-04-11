@@ -51,9 +51,17 @@ const About = (props) => {
         else {
             console.log("HERE3");
         }
-      }, [props.location.state.roomName, props.location.state.token]);
-
-      console.log("HERE")
+      }, []);
+      if (!props.location.state) {
+          console.log("HERE")
+          const roomName = window.location.pathname.substr(1)
+          return (
+            <div className="room">
+                <h2>Entering Room: {roomName}</h2>
+                
+            </div>
+          )
+      }
       return (
         <div className="room">
           <h2>Room: {props.location.state.roomName}</h2>
