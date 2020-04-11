@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Video from 'twilio-video';
 import Participant from './Participant';
+import { Link } from 'react-router-dom';
+
 
 const About = (props) => {
     // let roomName = props.location.state.roomName;
@@ -55,7 +57,7 @@ const About = (props) => {
       return (
         <div className="room">
           <h2>Room: {props.location.state.roomName}</h2>
-          <button >Leave Room</button>
+          <Link to="/"> <button>Leave Room</button> </Link>
           <div className="local-participant">
             {room ? (
               <Participant
