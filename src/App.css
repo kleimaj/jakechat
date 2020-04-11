@@ -90,6 +90,13 @@ button:hover {
   top: 0;
   right: 20px;
 }
+
+.buttonLeft {
+  position: absolute;
+  top: 0;
+  left: 20px;
+}
+
 .room > h3 {
   text-align: center;
   font-weight: 300;

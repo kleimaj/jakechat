@@ -58,6 +58,15 @@ const About = (props) => {
         <div className="room">
           <h2>Room: {props.location.state.roomName}</h2>
           <Link to="/"> <button>Leave Room</button> </Link>
+          <button className="buttonLeft" onClick={() => {
+            var textField = document.createElement('textarea')
+            textField.innerText = window.location.href
+            document.body.appendChild(textField)
+            textField.select()
+            document.execCommand('copy')
+            textField.remove()
+          }}>Invite Friends</button>
+
           <div className="local-participant">
             {room ? (
               <Participant
