@@ -28,13 +28,14 @@ const About = (props) => {
     const data = await fetch(process.env.REACT_APP_API_URL+'video/token', {
         method: 'POST',
         mode: 'cors', 
+        credentials: 'include',
         body: JSON.stringify({
             identity: username,
             room: roomName
         }),
         headers: {
-            // 'Content-Type': 'application/json'
-        'Content-Type': 'text/plain'
+            'Content-Type': 'application/json'
+        // 'Content-Type': 'text/plain'
 
         }
         }).then(res => res.json());
