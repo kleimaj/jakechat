@@ -7,7 +7,6 @@ import { Link, Redirect } from 'react-router-dom';
 const About = (props) => {
     // let roomName = props.location.state.roomName;
     // let token = props.location.state.token;
-    // console.log(props)
     const [username, setUsername] = useState('');
     const [room, setRoom] = useState();
     const [token, setToken] = useState();
@@ -21,9 +20,7 @@ const About = (props) => {
       }, []);
     const handleSubmit = useCallback(async event => {
         event.preventDefault();
-        console.log("Submit");
         const roomName = window.location.pathname.substr(1);
-        // console.log(roomName, username)
         // const data = await fetch('http://localhost:3001/video/token', {
     const data = await fetch(process.env.REACT_APP_API_URL+'video/token', {
         method: 'POST',
@@ -43,7 +40,6 @@ const About = (props) => {
     });
 
     useEffect(() => {
-        console.log("changing")
         const participantConnected = participant => {
           setParticipants(prevParticipants => [...prevParticipants, participant]);
         };
@@ -53,14 +49,12 @@ const About = (props) => {
           );
         };
         if (props.location.state) {
-            console.log("connecting video")
             // token=props.location.state.token
             setToken(props.location.state.token);
             Video.connect(props.location.state.token, {
             name: props.location.state.roomName
             }).then(room => {
             setRoom(room);
-            console.log(room)
             room.on('participantConnected', participantConnected);
             room.on('participantDisconnected', participantDisconnected);
             room.participants.forEach(participantConnected);
@@ -80,12 +74,10 @@ const About = (props) => {
               };
         }
         else if (token) {
-            console.log("connecting video")
             Video.connect(token, {
                 name: window.location.pathname.substr(1)
                 }).then(room => {
                 setRoom(room);
-                console.log(room)
                 room.on('participantConnected', participantConnected);
                 room.on('participantDisconnected', participantDisconnected);
                 room.participants.forEach(participantConnected);
@@ -105,11 +97,9 @@ const About = (props) => {
                   };
         }
         else {
-            console.log("HERE3");
         }
       }, [token]);
       if (!token) {
-          console.log("HERE")
           const roomName = window.location.pathname.substr(1)
           return (
             <div>
