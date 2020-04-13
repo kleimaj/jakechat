@@ -24,7 +24,8 @@ const About = (props) => {
         console.log("Submit");
         const roomName = window.location.pathname.substr(1);
         // console.log(roomName, username)
-        const data = await fetch('http://localhost:3001/video/token', {
+        // const data = await fetch('http://localhost:3001/video/token', {
+    const data = await fetch(process.env.REACT_APP_API_URL+'video/token', {
         method: 'POST',
         mode: 'cors', 
         body: JSON.stringify({
