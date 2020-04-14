@@ -42,10 +42,6 @@ const VideoChat = () => {
   //       }).then(res => res.json();
   // })
 
-  const handleLogout = useCallback(event => {
-    setToken(null);
-  }, []);
-
    let render;
   if (token) {
     render = (
