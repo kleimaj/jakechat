@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import VideoChat from './VideoChat';
 import Routes from './config/routes';
 
 const App = () => {
