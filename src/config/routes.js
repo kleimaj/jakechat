@@ -1,7 +1,6 @@
 import React from 'react';
-import { Route, Link, Switch, Redirect} from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import VideoChat from '.././VideoChat';
-// import About from '.././About';
 import Room from '.././Room';
 
 const Routes = (props) => {
