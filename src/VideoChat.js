@@ -13,7 +13,7 @@ const VideoChat = () => {
   }, []);
 
   const handleRoomNameChange = useCallback(event => {
-    setRoomName(event.target.value);
+    setRoomName(event.target.value.replace(/\s+/g,'-').toLowerCase());
   }, []);
 
   const handleSubmit = useCallback(async event => {
