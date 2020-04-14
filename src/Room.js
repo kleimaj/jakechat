@@ -4,7 +4,7 @@ import Participant from './Participant';
 import { Link } from 'react-router-dom';
 
 
-const About = (props) => {
+const Room = (props) => {
     // let roomName = props.location.state.roomName;
     // let token = props.location.state.token;
     // console.log(props)
@@ -161,4 +161,4 @@ const About = (props) => {
       );
 }
 
-export default About;
+export default Room;
