@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Route, Link, Switch, Redirect} from 'react-router-dom';
 import VideoChat from '.././VideoChat';
-import About from '.././About';
+// import About from '.././About';
 import Room from '.././Room';
 
 const Routes = (props) => {
@@ -14,7 +14,7 @@ const Routes = (props) => {
             (token ?
               (<About />)
               : (<Redirect to="/" />))} /> */}
-              <Route path='/:roomName' component={ About } />
+              <Route path='/:roomName' component={ Room } />
           {/* <Route 
             path='/profile' 
             render={() => 
