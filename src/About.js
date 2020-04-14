@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Video from 'twilio-video';
 import Participant from './Participant';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const About = (props) => {
