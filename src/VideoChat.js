@@ -34,7 +34,6 @@ const VideoChat = () => {
    let render;
   if (token) {
     render = (
-        // <Room roomName={roomName} token={token} handleLogout={handleLogout} />
         <Redirect to={{
           pathname: '/'+roomName,
           state: { roomName: roomName,

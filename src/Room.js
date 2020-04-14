@@ -5,9 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 const Room = (props) => {
-    // let roomName = props.location.state.roomName;
-    // let token = props.location.state.token;
-    // console.log(props)
+
     const [username, setUsername] = useState('');
     const [room, setRoom] = useState();
     const [token, setToken] = useState();
@@ -39,7 +37,6 @@ const Room = (props) => {
     });
 
     useEffect(() => {
-        console.log("changing")
         const participantConnected = participant => {
           setParticipants(prevParticipants => [...prevParticipants, participant]);
         };
