@@ -16,9 +16,7 @@ const VideoChat = () => {
   }, []);
 
   const handleSubmit = useCallback(async event => {
-    // console.log(username, roomName);
     event.preventDefault();
-    // roomName = roomName.replace(/\s+/g,'-').toLowerCase() // replace spaces with -
     const data = await fetch('http://localhost:3001/video/token', {
       method: 'POST',
       mode: 'cors', 
@@ -32,15 +30,6 @@ const VideoChat = () => {
     }).then(res => res.json());
     setToken(data.token);
   }, [username, roomName]);
-
-  // const data = await fetch('http://localhost:3001/api/greeting', {
-  //   method: 'GET',
-  //   mode: 'no-cors',
-  //   headers: {
-  //           'Content-Type': 'application/json'
-  //         }
-  //       }).then(res => res.json();
-  // })
 
    let render;
   if (token) {
