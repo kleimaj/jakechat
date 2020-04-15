@@ -44,7 +44,6 @@ const Room = (props) => {
           );
         };
         if (props.location.state) {
-            console.log("connecting video")
             // token=props.location.state.token
             setToken(props.location.state.token);
             Video.connect(props.location.state.token, {
@@ -99,6 +98,7 @@ const Room = (props) => {
             console.log("HERE3");
         }
       }, [token]);
+      
       if (!token) {
           console.log("HERE")
           const roomName = window.location.pathname.substr(1)
