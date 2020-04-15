@@ -10,6 +10,7 @@ const Room = (props) => {
     const [token, setToken] = useState();
     const [participants, setParticipants] = useState([]);
     const [microphone, toggleMic] = useState(true);
+    const [video, toggleVid] = useState(true);
 
     const remoteParticipants = participants.map(participant => (
         <Participant key={participant.sid} participant={participant} />
@@ -49,6 +50,22 @@ const Room = (props) => {
           audioTrack.track.disable();
         });
         toggleMic(false);
+      }
+    }
+    const hide = (localParticipant) => {
+      if (!video) {
+        localParticipant.videoTracks.forEach(function (audioTrack) {
+          console.log("videoTrack-- "+audioTrack);
+             audioTrack.track.enable();
+        });
+        toggleVid(true);
+      }
+      else {
+        localParticipant.videoTracks.forEach(function (audioTrack) {
+          console.log("videoTrack-- "+audioTrack);
+          audioTrack.track.disable();
+        });
+        toggleVid(false);
       }
     }
     useEffect(() => {
@@ -164,7 +181,12 @@ const Room = (props) => {
               participant={room.localParticipant}
               // muted={}
               // hideVideo={}
-            /> <button onClick={()=> mute(room.localParticipant)}>Mute</button></>
+            /> 
+            <button onClick={()=> mute(room.localParticipant)}>Mute
+            </button>
+            <button className="buttonLeft" onClick={()=> hide(room.localParticipant)}>Hide
+            </button>
+            </>
             ) : (
               ''
             )}
