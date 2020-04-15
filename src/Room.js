@@ -19,9 +19,7 @@ const Room = (props) => {
       }, []);
     const handleSubmit = useCallback(async event => {
         event.preventDefault();
-        console.log("Submit");
         const roomName = window.location.pathname.substr(1);
-        // console.log(roomName, username)
         const data = await fetch('http://localhost:3001/video/token', {
         method: 'POST',
         mode: 'cors', 
