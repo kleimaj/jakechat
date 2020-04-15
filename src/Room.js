@@ -3,13 +3,13 @@ import Video from 'twilio-video';
 import Participant from './Participant';
 import { Link } from 'react-router-dom';
 
-
 const Room = (props) => {
 
     const [username, setUsername] = useState('');
     const [room, setRoom] = useState();
     const [token, setToken] = useState();
     const [participants, setParticipants] = useState([]);
+    const [microphone, toggleMic] = useState(true);
 
     const remoteParticipants = participants.map(participant => (
         <Participant key={participant.sid} participant={participant} />
@@ -33,7 +33,24 @@ const Room = (props) => {
         }).then(res => res.json());
         setToken(data.token);
     });
-
+    const mute = (localParticipant) => {
+      console.log(localParticipant);
+      console.log(microphone);
+      if (!microphone) {
+        localParticipant.audioTracks.forEach(function (audioTrack) {
+          console.log("audioTrack-- "+audioTrack);
+             audioTrack.track.enable();
+        });
+        toggleMic(true);
+      }
+      else {
+        localParticipant.audioTracks.forEach(function (audioTrack) {
+          console.log("audioTrack-- "+audioTrack);
+          audioTrack.track.disable();
+        });
+        toggleMic(false);
+      }
+    }
     useEffect(() => {
         const participantConnected = participant => {
           setParticipants(prevParticipants => [...prevParticipants, participant]);
@@ -98,7 +115,7 @@ const Room = (props) => {
             console.log("HERE3");
         }
       }, [token]);
-      
+
       if (!token) {
           console.log("HERE")
           const roomName = window.location.pathname.substr(1)
@@ -141,11 +158,13 @@ const Room = (props) => {
           }}>Invite Friends</button>
 
           <div className="local-participant">
-            {room ? (
+            {room ? (<>
               <Participant
               key={room.localParticipant.sid}
               participant={room.localParticipant}
-            />
+              // muted={}
+              // hideVideo={}
+            /> <button onClick={()=> mute(room.localParticipant)}>Mute</button></>
             ) : (
               ''
             )}
