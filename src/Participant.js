@@ -34,6 +34,15 @@ const Participant = ({ participant }) => {
     participant.on('trackSubscribed', trackSubscribed);
     participant.on('trackUnsubscribed', trackUnsubscribed);
 
+    participant.on('trackDisabled', track => {
+      // hide or remove the media element related to this track
+      console.log("disabled")
+    });
+    participant.on('trackEnabled', track => {
+      // show the track again
+      console.log("enabled")
+    });
+
     return () => {
       setVideoTracks([]);
       setAudioTracks([]);
