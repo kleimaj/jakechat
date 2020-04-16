@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Video from 'twilio-video';
 import Participant from './Participant';
 import { Link } from 'react-router-dom';
+import Modal from './Modal';
 
 const Room = (props) => {
 
@@ -11,7 +12,7 @@ const Room = (props) => {
     const [participants, setParticipants] = useState([]);
     const [microphone, toggleMic] = useState(true);
     const [video, toggleVid] = useState(true);
-    // const [disconnect, leave] = useState(false);
+    const [show, setShow] = useState(false);
 
     const remoteParticipants = participants.map(participant => (
         <Participant key={participant.sid} participant={participant} />
@@ -69,9 +70,6 @@ const Room = (props) => {
         toggleVid(false);
       }
     }
-    const leaveRoom = () => {
-
-    }
     useEffect(() => {
         if (props.location.state) {
           console.log("connecting participants from redirect")
@@ -121,7 +119,6 @@ const Room = (props) => {
               prevParticipants.filter(p => p !== participant)
             );
           };
-            console.log("connecting video")
             Video.connect(token, {
                 name: window.location.pathname.substr(1)
                 }).then(room => {
@@ -185,6 +182,7 @@ const Room = (props) => {
       // }
       return (
         <div className="room">
+          <Modal show={show}/>
           <h2>Room: {roomName}</h2>
           <Link to="/"> <button onClick={() => room.disconnect()}>Leave Room</button> </Link>
           <button className="buttonLeft" onClick={() => {
@@ -198,12 +196,13 @@ const Room = (props) => {
               .catch(console.error);
             } else {
               // fallback
-              var textField = document.createElement('textarea')
-              textField.innerText = window.location.href
-              document.body.appendChild(textField)
-              textField.select()
-              document.execCommand('copy')
-              textField.remove()
+              setShow(true);
+              // var textField = document.createElement('textarea')
+              // textField.innerText = window.location.href
+              // document.body.appendChild(textField)
+              // textField.select()
+              // document.execCommand('copy')
+              // textField.remove()
             }
           }}>Invite Friends</button>
 
