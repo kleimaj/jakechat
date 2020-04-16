@@ -13,6 +13,7 @@ const Participant = ({ participant }) => {
 
   useEffect(() => {
     const trackSubscribed = track => {
+      console.log("track subscribed")
       if (track.kind === 'video') {
         setVideoTracks(videoTracks => [...videoTracks, track]);
       } else {
@@ -21,6 +22,7 @@ const Participant = ({ participant }) => {
     };
 
     const trackUnsubscribed = track => {
+      console.log("track unsubscribed",track)
       if (track.kind === 'video') {
         setVideoTracks(videoTracks => videoTracks.filter(v => v !== track));
       } else {
@@ -44,6 +46,7 @@ const Participant = ({ participant }) => {
     });
 
     return () => {
+      console.log("removes listeners")
       setVideoTracks([]);
       setAudioTracks([]);
       participant.removeAllListeners();

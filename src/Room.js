@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Video from 'twilio-video';
 import Participant from './Participant';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 const Room = (props) => {
 
@@ -11,6 +11,7 @@ const Room = (props) => {
     const [participants, setParticipants] = useState([]);
     const [microphone, toggleMic] = useState(true);
     const [video, toggleVid] = useState(true);
+    const [disconnect, leave] = useState(false);
 
     const remoteParticipants = participants.map(participant => (
         <Participant key={participant.sid} participant={participant} />
@@ -68,16 +69,23 @@ const Room = (props) => {
         toggleVid(false);
       }
     }
+    const leaveRoom = () => {
+
+    }
     useEffect(() => {
-        const participantConnected = participant => {
-          setParticipants(prevParticipants => [...prevParticipants, participant]);
-        };
-        const participantDisconnected = participant => {
-          setParticipants(prevParticipants =>
-            prevParticipants.filter(p => p !== participant)
-          );
-        };
         if (props.location.state) {
+          console.log("connecting participants from redirect")
+          if (token) {
+            return
+          }
+          const participantConnected = participant => {
+            setParticipants(prevParticipants => [...prevParticipants, participant]);
+          };
+          const participantDisconnected = participant => {
+            setParticipants(prevParticipants =>
+              prevParticipants.filter(p => p !== participant)
+            );
+          };
             // token=props.location.state.token
             setToken(props.location.state.token);
             Video.connect(props.location.state.token, {
@@ -104,6 +112,15 @@ const Room = (props) => {
               };
         }
         else if (token) {
+          console.log("connecting participants from join")
+          const participantConnected = participant => {
+            setParticipants(prevParticipants => [...prevParticipants, participant]);
+          };
+          const participantDisconnected = participant => {
+            setParticipants(prevParticipants =>
+              prevParticipants.filter(p => p !== participant)
+            );
+          };
             console.log("connecting video")
             Video.connect(token, {
                 name: window.location.pathname.substr(1)
@@ -160,11 +177,19 @@ const Room = (props) => {
       }
       const roomName = window.location.pathname.substr(1)
         // connect() infinite loop
-
+      if (disconnect) {
+        console.log("leaving")
+        setToken(null);
+        setRoom(null);
+        // return <Redirect to="/" />
+      }
       return (
         <div className="room">
           <h2>Room: {roomName}</h2>
-          <Link to="/"> <button>Leave Room</button> </Link>
+          <Link to="/"> <button onClick={() => room.disconnect()}>Leave Room</button> </Link>
+          {/* <button onClick={() => leave(true)}>Leave Room</button> */}
+          {/* <button onClick={() => { */}
+            {/* // setToken(null); }}>Leave Room</button> */}
           <button className="buttonLeft" onClick={() => {
             var textField = document.createElement('textarea')
             textField.innerText = window.location.href
@@ -184,7 +209,7 @@ const Room = (props) => {
             /> 
             <button onClick={()=> mute(room.localParticipant)}>Mute
             </button>
-            <button className="buttonLeft" onClick={()=> hide(room.localParticipant)}>Hide
+            <button className="buttonLeft" onClick={() => hide(room.localParticipant)}>Hide
             </button>
             </>
             ) : (
