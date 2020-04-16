@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Video from 'twilio-video';
 import Participant from './Participant';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Room = (props) => {
 
@@ -11,7 +11,7 @@ const Room = (props) => {
     const [participants, setParticipants] = useState([]);
     const [microphone, toggleMic] = useState(true);
     const [video, toggleVid] = useState(true);
-    const [disconnect, leave] = useState(false);
+    // const [disconnect, leave] = useState(false);
 
     const remoteParticipants = participants.map(participant => (
         <Participant key={participant.sid} participant={participant} />
@@ -177,23 +177,34 @@ const Room = (props) => {
       }
       const roomName = window.location.pathname.substr(1)
         // connect() infinite loop
-      if (disconnect) {
-        console.log("leaving")
-        setToken(null);
-        setRoom(null);
-        // return <Redirect to="/" />
-      }
+      // if (disconnect) {
+      //   console.log("leaving")
+      //   setToken(null);
+      //   setRoom(null);
+      //   // return <Redirect to="/" />
+      // }
       return (
         <div className="room">
           <h2>Room: {roomName}</h2>
           <Link to="/"> <button onClick={() => room.disconnect()}>Leave Room</button> </Link>
           <button className="buttonLeft" onClick={() => {
-            var textField = document.createElement('textarea')
-            textField.innerText = window.location.href
-            document.body.appendChild(textField)
-            textField.select()
-            document.execCommand('copy')
-            textField.remove()
+            if (navigator.share) {
+              navigator.share({
+                title: `Join ${username} on FreeChat!`,
+                url: window.location.href
+              }).then(() => {
+                console.log('Thanks for sharing!');
+              })
+              .catch(console.error);
+            } else {
+              // fallback
+              var textField = document.createElement('textarea')
+              textField.innerText = window.location.href
+              document.body.appendChild(textField)
+              textField.select()
+              document.execCommand('copy')
+              textField.remove()
+            }
           }}>Invite Friends</button>
 
           <div className="local-participant">
