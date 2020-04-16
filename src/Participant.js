@@ -38,10 +38,17 @@ const Participant = ({ participant }) => {
 
     participant.on('trackDisabled', track => {
       // hide or remove the media element related to this track
-      console.log("disabled")
+      console.log("disabled");
+      document.getElementById(participant.identity).style.visibility="hidden";
+      // let p = document.querySelector(".local-participant > .participant").children;
+      // p.item(1).style="visibility:hidden";
+      
+      // console.log(track)
     });
     participant.on('trackEnabled', track => {
       // show the track again
+      document.getElementById(participant.identity).style.visibility="visible";
+      // p.item(1).style="visibility:visible";
       console.log("enabled")
     });
 
@@ -76,7 +83,7 @@ const Participant = ({ participant }) => {
   return (
     <div className="participant">
       <h3>{participant.identity}</h3>
-      <video ref={videoRef} autoPlay={true} />
+      <video ref={videoRef} autoPlay={true} id={participant.identity} />
       <audio ref={audioRef} autoPlay={true} muted={true} />
     </div>
   );

@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div className="app">
       <header>
-        <h1>JakeChat</h1>
+        <h1>FreeChat</h1>
       </header>
       <main>
         <Routes />

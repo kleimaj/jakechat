@@ -187,9 +187,6 @@ const Room = (props) => {
         <div className="room">
           <h2>Room: {roomName}</h2>
           <Link to="/"> <button onClick={() => room.disconnect()}>Leave Room</button> </Link>
-          {/* <button onClick={() => leave(true)}>Leave Room</button> */}
-          {/* <button onClick={() => { */}
-            {/* // setToken(null); }}>Leave Room</button> */}
           <button className="buttonLeft" onClick={() => {
             var textField = document.createElement('textarea')
             textField.innerText = window.location.href
