@@ -182,9 +182,9 @@ const Room = (props) => {
       // }
       return (
         <div className="room">
-          <Modal show={show}/>
+          <Modal show={show} setShow={setShow}/>
           <h2>Room: {roomName}</h2>
-          <Link to="/"> <button onClick={() => room.disconnect()}>Leave Room</button> </Link>
+          {/* <Link to="/"> <button onClick={() => room ? room.disconnect() : ''}>Leave Room</button> </Link> */}
           <button className="buttonLeft" onClick={() => {
             if (navigator.share) {
               navigator.share({
@@ -214,6 +214,8 @@ const Room = (props) => {
               // muted={}
               // hideVideo={}
             /> 
+          <Link to="/"> <button onClick={() => room ? room.disconnect() : ''}>Leave Room</button> </Link>
+
             <button onClick={()=> mute(room.localParticipant)}>Mute
             </button>
             <button className="buttonLeft" onClick={() => hide(room.localParticipant)}>Hide

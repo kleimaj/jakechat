@@ -131,7 +131,9 @@ button:hover {
   justify-content: center;
   align-items: center;
 }
-
+.modalBody {
+  background-color: #fff;
+}
 .participant {
   /* background: #333e5a; */
   /* background: #495080; */
