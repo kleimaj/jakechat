@@ -221,7 +221,7 @@ const Room = (props) => {
             <FontAwesomeIcon icon={faUserPlus} />
           </button>
 
-          <Link className="exitLink" to="/"> <button className="exitBtn" onClick={() => room ? room.disconnect() : ''}>
+          <Link className="exitLink" to="/"> <button id="exitBtn" onClick={() => room ? room.disconnect() : ''}>
             <FontAwesomeIcon icon={faPhoneSlash} />
             </button> </Link>
 

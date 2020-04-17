@@ -44,8 +44,8 @@ const VideoChat = () => {
   } else {
     render = (
       !show ? <>
-      <center>
-      <h2>private 👏 simple 👏 free 👏 video 👏 chat</h2>
+      <center className="splashContainer">
+      <h2 className="splashHeader">private 👏 simple 👏 free 👏 video 👏 chat</h2>
       <button className="startButton" onClick={() => showForm(true)}>Start</button>
       </center>
       </>

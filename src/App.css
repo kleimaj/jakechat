@@ -11,14 +11,16 @@ html {
 body {
   /* font-family: Helvetica, Arial, sans-serif; */
   /* color: #333e5a; */
-  color: #2f2bad;
+  /* color: #2f2bad; */
+  color: black;
   min-height: 100%;
 }
 
 header {
   /* background: #f0293e; */
   /* background: #495080; */
-  background: #2f2bad;
+  /* background: #2f2bad; */
+  background:black;
   color: #fff;
   text-align: center;
   flex-grow: 0;
@@ -76,7 +78,8 @@ form > div > input {
 button {
   /* background: #333e5a; */
   /* background: #495080; */
-  background: #2f2bad;
+  /* background: #2f2bad; */
+  background: black;
 
   color: #fff;
   font-size: 16px;
@@ -89,6 +92,15 @@ button:hover {
 }
 .startButton {
   width: 100px;
+  height: 50px;
+  font-size: 25px;
+}
+.splashContainer {
+  margin-top: 30px;
+}
+.splashHeader {
+  color:black;
+  font-size: 40px;
 }
 .fas {
   color: white !important;
@@ -96,7 +108,7 @@ button:hover {
 .exitLink {
   display: inline-block;
 }
-.exitBtn {
+#exitBtn {
   background: red;
 }
 .subheader {
@@ -132,6 +144,7 @@ button:hover {
   width: 45px;
   margin: 10px;
   opacity: .9;
+  background: darkslateblue;
 }
 
 .room > h3 {
@@ -201,7 +214,8 @@ video {
 footer {
   /* background: #333e5a; */
   /* background: #335a36; */
-  background: #2f2bad;
+  /* background: #2f2bad; */
+  background: black;
   color: #fff;
   text-align: center;
   flex-grow: 0;
