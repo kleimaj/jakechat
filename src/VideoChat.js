@@ -6,6 +6,7 @@ const VideoChat = () => {
   const [username, setUsername] = useState('');
   const [roomName, setRoomName] = useState('');
   const [token, setToken] = useState(null);
+  const [show, showForm] = useState(false);
   
   const handleUsernameChange = useCallback(event => {
     setUsername(event.target.value);
@@ -42,6 +43,13 @@ const VideoChat = () => {
     );
   } else {
     render = (
+      !show ? <>
+      <center>
+      <h2>private 👏 simple 👏 free 👏 video 👏 chat</h2>
+      <button className="startButton" onClick={() => showForm(true)}>Start</button>
+      </center>
+      </>
+      :
       <Lobby
          username={username}
          roomName={roomName}

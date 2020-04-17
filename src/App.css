@@ -9,9 +9,9 @@ html {
 }
 
 body {
-  font-family: Helvetica, Arial, sans-serif;
-  color: #333e5a;
-  /* color: #2f2bad; */
+  /* font-family: Helvetica, Arial, sans-serif; */
+  /* color: #333e5a; */
+  color: #2f2bad;
   min-height: 100%;
 }
 
@@ -26,7 +26,7 @@ header {
 }
 
 h1 {
-  font-weight: 300;
+  font-weight: 600;
   padding: 0.4em 0;
 }
 
@@ -51,7 +51,7 @@ form {
 }
 
 h2 {
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 1em;
   text-align: center;
 }
@@ -87,25 +87,56 @@ button {
 button:hover {
   filter: brightness(150%);
 }
-
+.startButton {
+  width: 100px;
+}
+.fas {
+  color: white !important;
+}
+.exitLink {
+  display: inline-block;
+}
+.exitBtn {
+  background: red;
+}
+.subheader {
+  margin-bottom: 10px;
+  margin-top: -10px;
+}
 .room {
   position: relative;
 }
 .room button {
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   right: 20px;
 }
 
 .buttonLeft {
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   left: 20px;
+}
+.buttonLeave{
+  background: red;
+  margin-top: 20px;
+}
+
+.buttonGroup {
+  display: inline-block;
+  position: relative;
+  bottom: 100px;
+}
+.buttonGroup button {
+  padding: 10px;
+  width: 45px;
+  margin: 10px;
+  opacity: .9;
 }
 
 .room > h3 {
   text-align: center;
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 1em;
 }
 
@@ -138,7 +169,8 @@ button:hover {
   /* background: #333e5a; */
   /* background: #495080; */
   /* background: #335a36; */
-  background: #2f2bad;
+  /* background: #2f2bad; */
+  background: black;
 
   padding: 10px;
   border-radius: 6px;
@@ -152,6 +184,10 @@ button:hover {
   text-align: center;
   padding-bottom: 0.5em;
   color: #fff;
+  position: absolute;
+  font-size: 35px;
+  padding-left: 50px;
+  padding-top: 10px;
 }
 
 video {

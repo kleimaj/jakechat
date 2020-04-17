@@ -3,6 +3,8 @@ import Video from 'twilio-video';
 import Participant from './Participant';
 import { Link } from 'react-router-dom';
 import Modal from './Modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMicrophone, faMicrophoneSlash, faPhoneSlash, faVideo, faVideoSlash, faUserPlus} from '@fortawesome/free-solid-svg-icons'
 
 const Room = (props) => {
 
@@ -153,7 +155,6 @@ const Room = (props) => {
           return (
             <div>
                 <h2>Entering Room: {roomName}</h2>
-                <Link to="/"> <button>Leave Room</button> </Link>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor="name">Name:</label>
@@ -165,10 +166,11 @@ const Room = (props) => {
                         onChange={handleUsernameChange}
                         />
                     </div>
-                  <button type="submit">Submit</button>
-
+                  <button type="submit">Join</button>
                 </form>
-                
+                <center>
+                <Link to="/" className="exitLink"> <button className="buttonLeave">Leave Room</button> </Link>
+                </center>
             </div>
           )
       }
@@ -185,7 +187,18 @@ const Room = (props) => {
           <Modal show={show} setShow={setShow}/>
           <h2>Room: {roomName}</h2>
           {/* <Link to="/"> <button onClick={() => room ? room.disconnect() : ''}>Leave Room</button> </Link> */}
-          <button className="buttonLeft" onClick={() => {
+          <div className="local-participant">
+            {room ? (<>
+              <Participant
+              key={room.localParticipant.sid}
+              participant={room.localParticipant}
+              // muted={}
+              // hideVideo={}
+            />
+          <div className="remote-participants">{remoteParticipants}</div>
+
+            <div className="buttonGroup">
+            <button className="buttonLeft" onClick={() => {
             if (navigator.share) {
               navigator.share({
                 title: `Join ${username} on FreeChat!`,
@@ -204,29 +217,31 @@ const Room = (props) => {
               // document.execCommand('copy')
               // textField.remove()
             }
-          }}>Invite Friends</button>
+          }}>
+            <FontAwesomeIcon icon={faUserPlus} />
+          </button>
 
-          <div className="local-participant">
-            {room ? (<>
-              <Participant
-              key={room.localParticipant.sid}
-              participant={room.localParticipant}
-              // muted={}
-              // hideVideo={}
-            /> 
-          <Link to="/"> <button onClick={() => room ? room.disconnect() : ''}>Leave Room</button> </Link>
+          <Link className="exitLink" to="/"> <button className="exitBtn" onClick={() => room ? room.disconnect() : ''}>
+            <FontAwesomeIcon icon={faPhoneSlash} />
+            </button> </Link>
 
-            <button onClick={()=> mute(room.localParticipant)}>Mute
+            <button onClick={()=> mute(room.localParticipant)}>
+            {microphone 
+            ? <FontAwesomeIcon icon={faMicrophone} /> 
+            : <FontAwesomeIcon icon={faMicrophoneSlash} />}
             </button>
-            <button className="buttonLeft" onClick={() => hide(room.localParticipant)}>Hide
+            <button className="buttonLeft" onClick={() => hide(room.localParticipant)}>{video 
+            ? <FontAwesomeIcon icon={faVideo} /> 
+            : <FontAwesomeIcon icon={faVideoSlash} />}
             </button>
+            </div>
             </>
             ) : (
               ''
             )}
           </div>
-          <h3>Remote Participants</h3>
-          <div className="remote-participants">{remoteParticipants}</div>
+          {/* <h3>Remote Participants</h3> */}
+          {/* <div className="remote-participants">{remoteParticipants}</div> */}
         </div>
       );
 }
