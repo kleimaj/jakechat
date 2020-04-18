@@ -188,53 +188,55 @@ const Room = (props) => {
           <h2>Room: {roomName}</h2>
           {/* <Link to="/"> <button onClick={() => room ? room.disconnect() : ''}>Leave Room</button> </Link> */}
           <div className="local-participant">
-            {room ? (<>
-              <Participant
-              key={room.localParticipant.sid}
-              participant={room.localParticipant}
-              // muted={}
-              // hideVideo={}
-            />
-          <div className="remote-participants">{remoteParticipants}</div>
-
-            <div className="buttonGroup">
-            <button className="buttonLeft" onClick={() => {
-            if (navigator.share) {
-              navigator.share({
-                title: `Join ${username} on FreeChat!`,
-                url: window.location.href
-              }).then(() => {
-                console.log('Thanks for sharing!');
-              })
-              .catch(console.error);
-            } else {
-              // fallback
-              setShow(true);
-              // var textField = document.createElement('textarea')
-              // textField.innerText = window.location.href
-              // document.body.appendChild(textField)
-              // textField.select()
-              // document.execCommand('copy')
-              // textField.remove()
-            }
-          }}>
-            <FontAwesomeIcon icon={faUserPlus} />
-          </button>
-
-          <Link className="exitLink" to="/"> <button id="exitBtn" onClick={() => room ? room.disconnect() : ''}>
-            <FontAwesomeIcon icon={faPhoneSlash} />
-            </button> </Link>
-
-            <button onClick={()=> mute(room.localParticipant)}>
-            {microphone 
-            ? <FontAwesomeIcon icon={faMicrophone} /> 
-            : <FontAwesomeIcon icon={faMicrophoneSlash} />}
-            </button>
-            <button className="buttonLeft" onClick={() => hide(room.localParticipant)}>{video 
-            ? <FontAwesomeIcon icon={faVideo} /> 
-            : <FontAwesomeIcon icon={faVideoSlash} />}
-            </button>
+            {room ? (
+            <>
+            <div className="participants-container">
+                <Participant
+                key={room.localParticipant.sid}
+                participant={room.localParticipant}
+                // muted={}
+                // hideVideo={}
+              > </Participant>
+              <div className="remote-participants">{remoteParticipants}</div>
             </div>
+              <div className="buttonGroup">
+                <button className="buttonLeft" onClick={() => {
+                if (navigator.share) {
+                  navigator.share({
+                    title: `Join ${username} on FreeChat!`,
+                    url: window.location.href
+                  }).then(() => {
+                    console.log('Thanks for sharing!');
+                  })
+                  .catch(console.error);
+                } else {
+                  // fallback
+                  setShow(true);
+                  // var textField = document.createElement('textarea')
+                  // textField.innerText = window.location.href
+                  // document.body.appendChild(textField)
+                  // textField.select()
+                  // document.execCommand('copy')
+                  // textField.remove()
+                  }
+                }}>
+                <FontAwesomeIcon icon={faUserPlus} />
+                </button>
+
+                <Link className="exitLink" to="/"> <button id="exitBtn" onClick={() => room ? room.disconnect() : ''}>
+              <FontAwesomeIcon icon={faPhoneSlash} />
+                </button> </Link>
+
+                <button onClick={()=> mute(room.localParticipant)}>
+                {microphone 
+                ? <FontAwesomeIcon icon={faMicrophone} /> 
+                : <FontAwesomeIcon icon={faMicrophoneSlash} />}
+              </button>
+                <button className="buttonLeft" onClick={() => hide(room.localParticipant)}>{video 
+              ? <FontAwesomeIcon icon={faVideo} /> 
+                : <FontAwesomeIcon icon={faVideoSlash} />}
+                </button>
+              </div>
             </>
             ) : (
               ''
@@ -243,6 +245,7 @@ const Room = (props) => {
           {/* <h3>Remote Participants</h3> */}
           {/* <div className="remote-participants">{remoteParticipants}</div> */}
         </div>
+
       );
 }
 

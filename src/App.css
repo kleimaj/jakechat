@@ -91,9 +91,9 @@ button:hover {
   filter: brightness(150%);
 }
 .startButton {
-  width: 100px;
-  height: 50px;
-  font-size: 25px;
+  width: 70px;
+  height: 40px;
+  font-size: 20px;
 }
 .splashContainer {
   margin-top: 30px;
@@ -135,9 +135,9 @@ button:hover {
 }
 
 .buttonGroup {
-  display: inline-block;
+  /* display: inline-block; */
   position: relative;
-  bottom: 100px;
+  /* bottom: 100px; */
 }
 .buttonGroup button {
   padding: 10px;
@@ -161,7 +161,12 @@ button:hover {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-  padding: 0 2em 2em;
+  /* padding: 0 2em 2em; */
+}
+.participants-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .modal {
   position: fixed;
