@@ -38,7 +38,7 @@ const Participant = ({ participant }) => {
 
     participant.on('trackDisabled', track => {
       // hide or remove the media element related to this track
-      if (track.kind == 'video')
+      if (track.kind === 'video')
         document.getElementById(participant.identity).style.visibility="hidden";
       console.log("disabled");
       // let p = document.querySelector(".local-participant > .participant").children;
@@ -48,7 +48,7 @@ const Participant = ({ participant }) => {
     });
     participant.on('trackEnabled', track => {
       // show the track again
-      if (track.kind == 'video')
+      if (track.kind === 'video')
         document.getElementById(participant.identity).style.visibility="visible";
       // p.item(1).style="visibility:visible";
       console.log("enabled")

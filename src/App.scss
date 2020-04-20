@@ -18,6 +18,20 @@
     font-weight: lighter;
     font-style: normal;
   }
+
+  @font-face {
+    font-family: "Inconsolata";
+    src: url("fonts/Inconsolata/Inconsolata-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Inconsolata";
+    src: url("fonts/Inconsolata/Inconsolata-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+  }
   
   * {
     margin: 0;
@@ -121,6 +135,7 @@
   }
   .splashContainer {
     margin-top: 30px;
+    font-family: 'Inconsolata';
   }
   .splashHeader {
     color:black;
