@@ -74,7 +74,7 @@ const Room = (props) => {
     }
     useEffect(() => {
         if (props.location.state) {
-          console.log("connecting participants from redirect")
+          // console.log("connecting participants from redirect")
           if (token) {
             return
           }
@@ -112,7 +112,7 @@ const Room = (props) => {
               };
         }
         else if (token) {
-          console.log("connecting participants from join")
+          // console.log("connecting participants from join")
           const participantConnected = participant => {
             setParticipants(prevParticipants => [...prevParticipants, participant]);
           };
