@@ -145,6 +145,11 @@ button:hover {
   font-size: 30px;
 }
 
+.headerLink {
+  text-decoration: none;
+  color: white;
+}
+
 .fas {
   color: white !important;
 }
@@ -323,11 +328,8 @@ button:hover {
   padding: 10px;
   border-radius: 6px;
   display: inline-block;
+  width: 500px;
   /* margin-right: 10px; */
-}
-
-.participant:last-child {
-  margin-right: 0;
 }
 
 .participant h3 {
@@ -335,7 +337,7 @@ button:hover {
   padding-bottom: 0.5em;
   color: #fff;
   position: absolute;
-  font-size: 35px;
+  font-size: 30px;
   padding-left: 50px;
   padding-top: 10px;
 }

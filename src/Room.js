@@ -197,7 +197,8 @@ const Room = (props) => {
                 // muted={}
                 // hideVideo={}
               > </Participant>
-              <div className="remote-participants">{remoteParticipants}</div>
+              {remoteParticipants}
+              {/* <div className="remote-participants">{remoteParticipants}</div> */}
             </div>
               <div className="buttonGroup">
                 <button className="buttonLeft" onClick={() => {
