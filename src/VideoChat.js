@@ -1,25 +1,23 @@
 import React, { useState, useCallback } from 'react';
 import { Redirect } from 'react-router-dom';
 import Lobby from './Lobby';
-import Room from './Room';
 
 const VideoChat = () => {
   const [username, setUsername] = useState('');
   const [roomName, setRoomName] = useState('');
   const [token, setToken] = useState(null);
+  const [show, showForm] = useState(false);
   
   const handleUsernameChange = useCallback(event => {
     setUsername(event.target.value);
   }, []);
 
   const handleRoomNameChange = useCallback(event => {
-    setRoomName(event.target.value);
+    setRoomName(event.target.value.replace(/\s+/g,'-').toLowerCase());
   }, []);
 
   const handleSubmit = useCallback(async event => {
-    // console.log(username, roomName);
     event.preventDefault();
-    // roomName = roomName.replace(/\s+/g,'-').toLowerCase() // replace spaces with -
     const data = await fetch('http://localhost:3001/video/token', {
       method: 'POST',
       mode: 'cors', 
@@ -34,23 +32,9 @@ const VideoChat = () => {
     setToken(data.token);
   }, [username, roomName]);
 
-  // const data = await fetch('http://localhost:3001/api/greeting', {
-  //   method: 'GET',
-  //   mode: 'no-cors',
-  //   headers: {
-  //           'Content-Type': 'application/json'
-  //         }
-  //       }).then(res => res.json();
-  // })
-
-  const handleLogout = useCallback(event => {
-    setToken(null);
-  }, []);
-
    let render;
   if (token) {
     render = (
-        // <Room roomName={roomName} token={token} handleLogout={handleLogout} />
         <Redirect to={{
           pathname: '/'+roomName,
           state: { roomName: roomName,
@@ -59,6 +43,13 @@ const VideoChat = () => {
     );
   } else {
     render = (
+      !show ? <>
+      <center className="splashContainer">
+      <h2 className="splashHeader">easy <span role="img" aria-label="clap">👏</span> simple <span role="img" aria-label="clap">👏</span> free <span role="img" aria-label="clap">👏</span> video <span role="img" aria-label="clap">👏</span> chat</h2>
+      <button className="startButton" onClick={() => showForm(true)}>Start</button>
+      </center>
+      </>
+      :
       <Lobby
          username={username}
          roomName={roomName}

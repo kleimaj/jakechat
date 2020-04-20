@@ -1,7 +1,43 @@
+@font-face {
+  font-family: "RobotoMono";
+  src: url("fonts/Roboto_Mono/RobotoMono-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "RobotoMono";
+  src: url("fonts/Roboto_Mono/RobotoMono-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "RobotoMono";
+  src: url("fonts/Roboto_Mono/RobotoMono-Regular.ttf") format("truetype");
+  font-weight: lighter;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inconsolata";
+  src: url("fonts/Inconsolata/Inconsolata-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inconsolata";
+  src: url("fonts/Inconsolata/Inconsolata-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 html {
@@ -9,21 +45,29 @@ html {
 }
 
 body {
-  font-family: Helvetica, Arial, sans-serif;
-  color: #333e5a;
+  /* font-family: Helvetica, Arial, sans-serif; */
+  font-family: 'RobotoMono', monospace;
+  /* color: #333e5a; */
+  /* color: #2f2bad; */
+  color: black;
   min-height: 100%;
 }
 
 header {
-  background: #f0293e;
+  /* background: #f0293e; */
+  /* background: #495080; */
+  /* background: #2f2bad; */
+  background: black;
   color: #fff;
   text-align: center;
-  flex-grow: 0;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
   margin-bottom: 2em;
 }
 
 h1 {
-  font-weight: 300;
+  font-weight: 600;
   padding: 0.4em 0;
 }
 
@@ -33,13 +77,20 @@ h1 {
 
 .app {
   min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 main {
   background: #ffffff;
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
 form {
@@ -48,7 +99,7 @@ form {
 }
 
 h2 {
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 1em;
   text-align: center;
 }
@@ -57,10 +108,12 @@ form > div {
   width: 100%;
   margin-bottom: 1em;
 }
+
 form > div > label {
   display: block;
   margin-bottom: 0.3em;
 }
+
 form > div > input {
   display: block;
   width: 100%;
@@ -71,62 +124,237 @@ form > div > input {
 }
 
 button {
-  background: #333e5a;
+  /* background: #333e5a; */
+  /* background: #495080; */
+  /* background: #2f2bad; */
+  /* background: black; */
+  background: -webkit-gradient(linear, left bottom, left top, from(black), to(#4d4d4d));
+  background: linear-gradient(0deg, black 0%, #4d4d4d 100%);
   color: #fff;
   font-size: 16px;
   padding: 0.4em;
   border-radius: 6px;
   border: 1px solid transparent;
 }
+
 button:hover {
-  filter: brightness(150%);
+  -webkit-filter: brightness(120%);
+          filter: brightness(120%);
+  -webkit-transition: .2 ease;
+  transition: .2 ease;
+}
+
+.startButton {
+  width: 70px;
+  height: 40px;
+  font-size: 20px;
+}
+
+.splashContainer {
+  margin-top: 30px;
+  font-family: 'Inconsolata';
+}
+
+.splashHeader {
+  color: black;
+  font-size: 30px;
+}
+
+.headerLink {
+  text-decoration: none;
+  color: white;
+}
+
+.fas {
+  color: white !important;
+}
+
+.exitLink {
+  display: inline-block;
+}
+
+#exitBtn {
+  /* background: red; */
+  background: -webkit-gradient(linear, left top, left bottom, from(red), to(maroon));
+  background: linear-gradient(180deg, red 0%, maroon 100%);
+}
+
+.subheader {
+  margin-bottom: 10px;
+  margin-top: -10px;
 }
 
 .room {
   position: relative;
 }
+
 .room button {
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   right: 20px;
 }
 
 .buttonLeft {
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   left: 20px;
 }
 
+.buttonLeave {
+  /* background: #ff0000; */
+  background: -webkit-gradient(linear, left top, left bottom, from(red), to(maroon));
+  background: linear-gradient(180deg, red 0%, maroon 100%);
+  margin-top: 20px;
+}
+
+.buttonGroup {
+  /* display: inline-block; */
+  position: relative;
+  margin: 15px;
+  /* bottom: 100px; */
+}
+
+.buttonGroup button {
+  padding: 10px;
+  width: 45px;
+  margin: 10px;
+  opacity: .9;
+  /* background: #483d8b; */
+  /* background: rgb(72,61,139); */
+  /* background: linear-gradient(151deg, rgba(72,61,139,1) 35%, rgba(112,95,217,1) 100%); */
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(35%, darkslateblue), to(#705fd9));
+  background: linear-gradient(0deg, darkslateblue 35%, #705fd9 100%);
+}
+
 .room > h3 {
   text-align: center;
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 1em;
 }
 
 .local-participant {
   text-align: center;
-  margin-bottom: 2em;
+  /* margin-bottom: 2em; */
 }
+
 .remote-participants {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  padding: 0 2em 2em;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  /* padding: 0 2em 2em; */
 }
+
+.participants-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modal {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modal h2 {
+  font-weight: bold;
+}
+
+.modalBody {
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+.modal p {
+  margin: 0 25px;
+  width: 400px;
+  padding: 15px 60px;
+}
+
+.modal h3 {
+  text-align: center;
+  padding: 15px;
+  margin-right: 100px;
+  margin-bottom: -20px;
+  font-weight: normal;
+}
+
+.modalClose {
+  width: 40px;
+  margin: 15px;
+  display: inline-block;
+}
+
+.modal input {
+  display: inline-block;
+  width: 50%;
+  font-size: 16px;
+  padding: 0.4em;
+  border-radius: 6px;
+  border: 1px solid #333e5a;
+  margin: 0 auto;
+}
+
+.inviteContainer {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.inviteContainer button {
+  margin: 10px;
+}
+
 .participant {
-  background: #333e5a;
+  /* background: #333e5a; */
+  /* background: #495080; */
+  /* background: #335a36; */
+  /* background: #2f2bad; */
+  background: black;
+  -webkit-box-shadow: -8px 6px 5px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: -8px 6px 5px -1px rgba(0, 0, 0, 0.75);
   padding: 10px;
   border-radius: 6px;
   display: inline-block;
-  margin-right: 10px;
+  width: 500px;
+  /* margin-right: 10px; */
 }
-.participant:last-child {
-  margin-right: 0;
-}
+
 .participant h3 {
   text-align: center;
   padding-bottom: 0.5em;
   color: #fff;
+  position: absolute;
+  font-size: 30px;
+  padding-left: 50px;
+  padding-top: 10px;
 }
 
 video {
@@ -138,13 +366,40 @@ video {
 }
 
 footer {
-  background: #333e5a;
+  /* background: #333e5a; */
+  /* background: #335a36; */
+  /* background: #2f2bad; */
+  background: black;
   color: #fff;
   text-align: center;
-  flex-grow: 0;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
   padding: 1em 0;
 }
 
 footer a {
   color: #fff;
 }
+
+@media only screen and (max-width: 600px) {
+  .splashContainer {
+    margin-top: 40px;
+  }
+  .splashHeader {
+    color: black;
+  }
+  .startButton {
+    margin-top: 50px;
+  }
+  .participant h3 {
+    text-align: center;
+    padding-bottom: 0.5em;
+    color: #fff;
+    position: absolute;
+    font-size: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+  }
+}
+/*# sourceMappingURL=App.css.map */

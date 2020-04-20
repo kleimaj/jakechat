@@ -13,6 +13,7 @@ const Participant = ({ participant }) => {
 
   useEffect(() => {
     const trackSubscribed = track => {
+      console.log("track subscribed")
       if (track.kind === 'video') {
         setVideoTracks(videoTracks => [...videoTracks, track]);
       } else {
@@ -21,6 +22,7 @@ const Participant = ({ participant }) => {
     };
 
     const trackUnsubscribed = track => {
+      console.log("track unsubscribed",track)
       if (track.kind === 'video') {
         setVideoTracks(videoTracks => videoTracks.filter(v => v !== track));
       } else {
@@ -34,7 +36,26 @@ const Participant = ({ participant }) => {
     participant.on('trackSubscribed', trackSubscribed);
     participant.on('trackUnsubscribed', trackUnsubscribed);
 
+    participant.on('trackDisabled', track => {
+      // hide or remove the media element related to this track
+      if (track.kind === 'video')
+        document.getElementById(participant.identity).style.visibility="hidden";
+      console.log("disabled");
+      // let p = document.querySelector(".local-participant > .participant").children;
+      // p.item(1).style="visibility:hidden";
+      
+      // console.log(track)
+    });
+    participant.on('trackEnabled', track => {
+      // show the track again
+      if (track.kind === 'video')
+        document.getElementById(participant.identity).style.visibility="visible";
+      // p.item(1).style="visibility:visible";
+      console.log("enabled")
+    });
+
     return () => {
+      console.log("removes listeners")
       setVideoTracks([]);
       setAudioTracks([]);
       participant.removeAllListeners();
@@ -64,8 +85,8 @@ const Participant = ({ participant }) => {
   return (
     <div className="participant">
       <h3>{participant.identity}</h3>
-      <video ref={videoRef} autoPlay={true} />
-      <audio ref={audioRef} autoPlay={true} muted={true} />
+      <video ref={videoRef} autoPlay={true} id={participant.identity} />
+      <audio ref={audioRef} autoPlay={true} muted={false} />
     </div>
   );
 };
