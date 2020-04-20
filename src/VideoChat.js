@@ -18,15 +18,20 @@ const VideoChat = () => {
 
   const handleSubmit = useCallback(async event => {
     event.preventDefault();
-    const data = await fetch('http://localhost:3001/video/token', {
+    // roomName = roomName.replace(/\s+/g,'-').toLowerCase() // replace spaces with -
+    // console.log(process.env.REACT_APP_API_URL)
+    // const data = await fetch('http://localhost:3001/video/token', {
+    const data = await fetch(process.env.REACT_APP_API_URL+'video/token', {
       method: 'POST',
       mode: 'cors', 
+      credentials: 'include',
       body: JSON.stringify({
         identity: username,
         room: roomName
       }),
       headers: {
         'Content-Type': 'application/json'
+        // 'Content-Type': 'text/plain'
       }
     }).then(res => res.json());
     setToken(data.token);
