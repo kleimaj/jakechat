@@ -1,15 +1,23 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes, faCopy } from '@fortawesome/free-solid-svg-icons'
+
 
 const Modal = ({show, setShow}) => {
     if (show) {
         return (
             <div className="modal">
                 <div className="modalBody">
+                    <button className="modalClose" onClick={() => setShow(false)}><FontAwesomeIcon icon={faTimes} /></button>
                     <h2>Invite your Friends</h2>
-                    <button onClick={() => setShow(false)}>Close</button>
-                    <p>Want to chat with more people? Stay connected and invite your friends to the room!</p>
-                    <h3>your referral link</h3>
-                    <p className="inviteLink">{window.location.href}</p>
+                    <p>Want to chat with more people? Reach out and invite your friends to the room!</p>
+                    <h3>click to copy</h3>
+                    <div className="inviteContainer">
+                    <input className="inviteLink" onClick={(event)=> {
+                        // document.execCommand
+                        event.target.select();
+                        document.execCommand('copy')
+                    }} onChange={() => {}} value={window.location.href}/>
                     <button onClick={() => {
                         let textField = document.createElement('textarea');
                         textField.innerText = window.location.href;
@@ -17,7 +25,10 @@ const Modal = ({show, setShow}) => {
                         textField.select();
                         document.execCommand('copy');
                         textField.remove();
-                    }}>Copy</button>
+                    }}>
+                        <FontAwesomeIcon icon={faCopy} />
+                    </button>
+                    </div>
                 </div>
             </div>
         )
