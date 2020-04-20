@@ -1,68 +1,57 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![GA logo](https://camo.githubusercontent.com/6ce15b81c1f06d716d753a61f5db22375fa684da/68747470733a2f2f67612d646173682e73332e616d617a6f6e6177732e636f6d2f70726f64756374696f6e2f6173736574732f6c6f676f2d39663838616536633963333837313639306533333238306663663535376633332e706e67)
 
-## Available Scripts
+# Final Project 
+## Jacob Kleiman 🌴
+### SEI 08
 
-In the project directory, you can run:
+<hr>
 
-### `npm start`
+Title: FreeChat<br>
+Technologies: React, Node.js, Twilio-Video, Sass<br>
+Creator: Jacob Kleiman<br>
+Goal: Implement a simple, easy, free, video chat
+<hr>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![Splash](images/splashpage.png)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+<hr>
 
-### `npm test`
+## The problem
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+With the current situation of the world right now (Covid-19), there is a high demand for video conferencing. A major issue I've observed is the issue of the entire onboarding and installation process. This web application proposes a solution that is to streamline the process of video conferencing, encrypted "rooms" for private and minimal accessibility.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Planning
+Over the intial days of the project, I worked on low to mid-fidelity wireframes, this process was one of the first things I did to ensure a feasible implementation and concept of design.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+<hr>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Splash](images/wire.png)
 
-### `npm run eject`
+<hr>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## The Video Stream
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+For my application I decided to use the video application programming interface from Twilio. In order to enable a user's audio and video with twilio, the application must use an ssl protocol (HTTPS) for security reasons.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<hr>
 
-## Learn More
+![Bubble-class](images/hooks.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<hr>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## The Rooms and Participants with React Hooks and JWT
 
-### Code Splitting
+The rooms hold participants, each instance of a participant contains a ```<video>``` and ```<audio>```, as well as a display name, and room name. All of the information is stored within an encrypted jwt (json web token), the primary packets of information passed between the client and server.
+I used React Hooks to streamline the process of manipulating the state, handling callbacks, as well as orchestrating the entire lifecycle of my Room component in a single useState function.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## The UI and Design
 
-### Analyzing the Bundle Size
+The visual concept behind my app is minimalistic. No bells and whistles to confuse the user, light button gradients, monospace typefaces (special thanks to Cat C). This was without the hardest front-end designs I ever implemented, due to the less is more concept that I pursued.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+<hr>
 
-### Making a Progressive Web App
+![Splash](images/splash.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+<hr>

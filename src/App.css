@@ -344,6 +344,7 @@ button:hover {
   border-radius: 6px;
   display: inline-block;
   width: 500px;
+  margin: 15px;
   /* margin-right: 10px; */
 }
 
