@@ -25,7 +25,7 @@ const Room = (props) => {
     const handleSubmit = useCallback(async event => {
         event.preventDefault();
         const roomName = window.location.pathname.substr(1);
-        const data = await fetch('http://localhost:3001/video/token', {
+        const data = await fetch(process.env.REACT_APP_API_URL+'video/token', {
         method: 'POST',
         mode: 'cors', 
         body: JSON.stringify({
