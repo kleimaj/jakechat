@@ -290,6 +290,7 @@
     display: inline-block;
     width: 500px;
     margin: 15px;
+    max-height: 380px;
     /* margin-right: 10px; */
   }
   // .participant:last-child {
@@ -308,6 +309,7 @@
   video {
     width: 100%;
     max-width: 600px;
+    max-height: 350px;
     display: block;
     margin: 0 auto;
     border-radius: 6px;
