@@ -44,7 +44,7 @@ For my application I decided to use the video application programming interface 
 ## The Rooms and Participants with React Hooks and JWT
 
 The rooms hold participants, each instance of a participant contains a ```<video>``` and ```<audio>```, as well as a display name, and room name. All of the information is stored within an encrypted jwt (json web token), the primary packets of information passed between the client and server.
-I used React Hooks to streamline the process of manipulating the state, handling callbacks, as well as orchestrating the entire lifecycle of my Room component in a single useState function.
+I used React Hooks to streamline the process of manipulating the state, handling callbacks, as well as orchestrating the entire lifecycle of my Room component in a single useEffect function.
 
 ## The UI and Design
 
